@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>视频作品集</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: #0b0d12;
+    color: #e8eaf0;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    position: relative;
+    padding: 96px 24px 72px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99,102,241,.25), transparent 70%),
+      radial-gradient(ellipse 40% 40% at 80% 20%, rgba(236,72,153,.12), transparent 70%),
+      #0b0d12;
+    overflow: hidden;
+  }
+  .hero .badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #a5b4fc;
+    background: rgba(99,102,241,.08);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(120deg, #fff 30%, #a5b4fc 70%, #f9a8d4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+  }
+  .hero p {
+    color: #9aa1b2;
+    font-size: clamp(14px, 2vw, 17px);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .hero .stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  .hero .stat b {
+    display: block;
+    font-size: 28px;
+    color: #fff;
+    font-weight: 700;
+  }
+  .hero .stat span { font-size: 13px; color: #7c8499; letter-spacing: 1px; }
+
+  /* ===== Section ===== */
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 24px 96px; }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 24px 0 40px;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #7c8499;
+  }
+  .section-title::before, .section-title::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+  }
+
+  /* ===== Video Card ===== */
+  .work {
+    margin-bottom: 72px;
+    border-radius: 20px;
+    background: #12151d;
+    border: 1px solid rgba(255,255,255,.07);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,.45);
+    transition: transform .35s ease, border-color .35s ease;
+  }
+  .work:hover { transform: translateY(-4px); border-color: rgba(165,180,252,.25); }
+  .work video {
+    display: block;
+    width: 100%;
+    max-height: 600px;
+    background: #000;
+    outline: none;
+  }
+  .work .meta { padding: 28px 32px 32px; }
+  .work .meta .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .work .meta h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .work .meta h2 .num {
+    font-size: 13px;
+    font-weight: 600;
+    color: #a5b4fc;
+    border: 1px solid rgba(165,180,252,.35);
+    border-radius: 8px;
+    padding: 2px 10px;
+    letter-spacing: 1px;
+  }
+  .tag {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    letter-spacing: 1px;
+  }
+  .tag.purple { background: rgba(99,102,241,.15); color: #a5b4fc; }
+  .tag.pink   { background: rgba(236,72,153,.15); color: #f9a8d4; }
+  .tag.amber  { background: rgba(245,158,11,.15); color: #fcd34d; }
+  .work .meta p { color: #9aa1b2; font-size: 15px; max-width: 720px; }
+
+  /* ===== Footer ===== */
+  footer {
+    text-align: center;
+    padding: 40px 24px 56px;
+    color: #5b6172;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border-top: 1px solid rgba(255,255,255,.06);
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 64px 20px 48px; }
+    .work .meta { padding: 20px; }
+    .hero .stats { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="badge">PORTFOLIO · 2026</span>
+  <h1>视频作品集</h1>
+  <p>以下为个人视频作品展示，涵盖口播短视频、AI 生成视频与影视混剪三个方向，欢迎观看。</p>
+  <div class="stats">
+    <div class="stat"><b>3</b><span>精选作品</span></div>
+    <div class="stat"><b>3</b><span>创作方向</span></div>
+    <div class="stat"><b>100%</b><span>独立制作</span></div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="section-title">作 品 展 示</div>
+
+  <!-- 作品 1 -->
+  <section class="work">
+    <video controls preload="metadata" playsinline>
+      <source src="电影混剪.mp4" type="video/mp4">
+      您的浏览器不支持视频播放。
+    </video>
+    <div class="meta">
+      <div class="top">
+        <h2><span class="num">01</span>电影混剪</h2>
+        <span class="tag amber">剪辑 / 影视二创</span>
+      </div>
+      <p>经典电影片段混剪作品，通过节奏把控、镜头组接与音乐卡点的配合，展现剪辑思维与视听语言表达能力。</p>
+    </div>
+  </section>
+
+  <!-- 作品 2 -->
+  <section class="work">
+    <video controls preload="metadata" playsinline>
+      <source src="ai视频《巷中双侠》.mp4" type="video/mp4">
+      您的浏览器不支持视频播放。
+    </video>
+    <div class="meta">
+      <div class="top">
+        <h2><span class="num">02</span>AI 生成视频 ·《巷中双侠》</h2>
+        <span class="tag purple">AIGC / 剧情短片</span>
+      </div>
+      <p>基于 AI 视频生成工具创作的剧情短片《巷中双侠》，从创意构思、提示词设计到成片剪辑独立完成，探索 AIGC 在叙事影像中的应用。</p>
+    </div>
+  </section>
+
+  <!-- 作品 3 -->
+  <section class="work">
+    <video controls preload="metadata" playsinline>
+      <source src="4个悄悄变美的微调部位口播.mp4" type="video/mp4">
+      您的浏览器不支持视频播放。
+    </video>
+    <div class="meta">
+      <div class="top">
+        <h2><span class="num">03</span>口播短视频 · 微调部位科普</h2>
+        <span class="tag pink">口播 / 短视频</span>
+      </div>
+      <p>医美科普类口播短视频，围绕「悄悄变美的微调部位」主题展开，节奏轻快、信息密度高，适配抖音、小红书等短视频平台传播场景。</p>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 个人视频作品集 · 感谢观看</footer>
+
+</body>
+</html>
