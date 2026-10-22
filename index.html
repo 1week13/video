@@ -200,6 +200,59 @@
     animation: spin .7s linear infinite;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ===== 首次进入提示弹窗 ===== */
+  .notice-mask {
+    position: fixed;
+    inset: 0;
+    background: rgba(92,74,82,.45);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn .3s ease;
+  }
+  .notice-mask.hide { display: none; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .notice-box {
+    background: #fff;
+    border-radius: 24px;
+    padding: 36px 32px 28px;
+    max-width: 340px;
+    width: calc(100% - 48px);
+    text-align: center;
+    border: 2px solid #FFE3EC;
+    box-shadow: 0 20px 60px rgba(232,93,138,.25);
+    animation: popIn .35s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes popIn { from { transform: scale(.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .notice-box .icon { margin-bottom: 14px; }
+  .notice-box h3 {
+    font-size: 17px;
+    color: #4A3A42;
+    margin-bottom: 10px;
+    font-weight: 800;
+  }
+  .notice-box p {
+    font-size: 14px;
+    color: #8A767E;
+    line-height: 1.7;
+    margin-bottom: 22px;
+  }
+  .notice-box button {
+    border: none;
+    cursor: pointer;
+    padding: 11px 40px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #FFA5C0, #E85D8A);
+    box-shadow: 0 6px 16px rgba(232,93,138,.35);
+    transition: transform .2s ease;
+  }
+  .notice-box button:hover { transform: scale(1.05); }
   .play-btn:hover {
     transform: translate(-50%, -50%) scale(1.1) rotate(-4deg);
     box-shadow: 0 14px 38px rgba(232,93,138,.6);
@@ -367,6 +420,16 @@
   © 2026 陈梓晴 · 个人视频作品集 · 感谢观看
   <svg class="heart" width="14" height="14" viewBox="0 0 24 24" fill="#FF8FAB"><path d="M12 21s-7.5-4.9-10-9.2C.4 8.6 2.3 5 5.7 5c2 0 3.4 1.1 4.3 2.4h4C15 6.1 16.4 5 18.4 5c3.4 0 5.3 3.6 3.7 6.8C19.5 16.1 12 21 12 21z"/></svg>
 </footer>
+
+<!-- 首次进入提示弹窗 -->
+<div class="notice-mask" id="noticeMask">
+  <div class="notice-box">
+    <svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="#FF8FAB"><path d="M12 21s-7.5-4.9-10-9.2C.4 8.6 2.3 5 5.7 5c2 0 3.4 1.1 4.3 2.4h4C15 6.1 16.4 5 18.4 5c3.4 0 5.3 3.6 3.7 6.8C19.5 16.1 12 21 12 21z"/></svg>
+    <h3>观看小提示</h3>
+    <p>建议使用电脑观看体验最佳<br>手机端或许会出现卡顿情况哦</p>
+    <button onclick="document.getElementById('noticeMask').classList.add('hide')">我知道了</button>
+  </div>
+</div>
 
 <script>
   // 播放按钮：点击播放，播放时隐藏，暂停/结束时重新显示
