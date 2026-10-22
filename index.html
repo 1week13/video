@@ -362,7 +362,13 @@
     var video = wrap.querySelector('video');
     var btn = wrap.querySelector('.play-btn');
     btn.addEventListener('click', function () { video.play(); });
-    video.addEventListener('play', function () { btn.classList.add('hidden'); });
+    video.addEventListener('play', function () {
+      btn.classList.add('hidden');
+      // 播放当前视频时，自动暂停其他视频
+      document.querySelectorAll('.video-wrap video').forEach(function (v) {
+        if (v !== video && !v.paused) v.pause();
+      });
+    });
     video.addEventListener('pause', function () { btn.classList.remove('hidden'); });
     video.addEventListener('ended', function () { btn.classList.remove('hidden'); });
   });
