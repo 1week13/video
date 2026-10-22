@@ -156,8 +156,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 88px;
-    height: 88px;
+    width: 62px;
+    height: 62px;
     border-radius: 50%;
     border: 3px solid rgba(255,255,255,.95);
     background: linear-gradient(135deg, #FFA5C0, #E85D8A);
@@ -172,7 +172,7 @@
   .play-btn::before {
     content: "";
     position: absolute;
-    inset: -12px;
+    inset: -8px;
     border-radius: 50%;
     border: 2px solid rgba(255,165,192,.55);
     animation: pulse-ring 2s ease-out infinite;
@@ -182,8 +182,8 @@
     100% { transform: scale(1.25); opacity: 0; }
   }
   .play-btn svg {
-    width: 34px;
-    height: 34px;
+    width: 24px;
+    height: 24px;
     fill: #fff;
     margin-left: 5px; /* 三角视觉居中 */
     filter: drop-shadow(0 2px 4px rgba(0,0,0,.2));
@@ -293,7 +293,7 @@
   <!-- 作品 1 -->
   <section class="work">
     <div class="video-wrap">
-      <video controls preload="metadata" playsinline>
+      <video controls preload="none" poster="cover1.jpg" playsinline>
         <source src="电影混剪.mp4" type="video/mp4">
         您的浏览器不支持视频播放。
       </video>
@@ -313,7 +313,7 @@
   <!-- 作品 2 -->
   <section class="work">
     <div class="video-wrap">
-      <video controls preload="metadata" playsinline>
+      <video controls preload="none" poster="cover2.jpg" playsinline>
         <source src="ai视频《巷中双侠》.mp4" type="video/mp4">
         您的浏览器不支持视频播放。
       </video>
@@ -333,7 +333,7 @@
   <!-- 作品 3 -->
   <section class="work">
     <div class="video-wrap">
-      <video controls preload="metadata" playsinline>
+      <video controls preload="none" poster="cover3.jpg" playsinline>
         <source src="4个悄悄变美的微调部位口播.mp4" type="video/mp4">
         您的浏览器不支持视频播放。
       </video>
