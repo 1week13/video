@@ -139,12 +139,62 @@
     box-shadow: 0 22px 54px rgba(255,143,171,.26);
     border-color: #FFB3C7;
   }
+  .video-wrap { position: relative; }
   .work video {
     display: block;
     width: 100%;
     max-height: 580px;
     background: #2A2126;
     outline: none;
+  }
+
+  /* ===== 播放按钮 ===== */
+  .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,.95);
+    background: linear-gradient(135deg, #FFA5C0, #E85D8A);
+    box-shadow: 0 10px 30px rgba(232,93,138,.5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .3s ease, opacity .3s ease, box-shadow .3s ease;
+    z-index: 2;
+  }
+  .play-btn::before {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,165,192,.55);
+    animation: pulse 2s ease-out infinite;
+  }
+  @keyframes pulse-ring {
+    0%   { transform: scale(.85); opacity: 1; }
+    100% { transform: scale(1.25); opacity: 0; }
+  }
+  .play-btn::before { animation-name: pulse-ring; }
+  .play-btn svg {
+    width: 34px;
+    height: 34px;
+    fill: #fff;
+    margin-left: 5px; /* 三角视觉居中 */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,.2));
+  }
+  .play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.1) rotate(-4deg);
+    box-shadow: 0 14px 38px rgba(232,93,138,.6);
+  }
+  .play-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(.5);
   }
   .work .meta { padding: 26px 30px 30px; }
   .work .meta .top {
@@ -241,10 +291,15 @@
 
   <!-- 作品 1 -->
   <section class="work">
-    <video controls preload="metadata" playsinline>
-      <source src="电影混剪.mp4" type="video/mp4">
-      您的浏览器不支持视频播放。
-    </video>
+    <div class="video-wrap">
+      <video controls preload="metadata" playsinline>
+        <source src="电影混剪.mp4" type="video/mp4">
+        您的浏览器不支持视频播放。
+      </video>
+      <button class="play-btn" aria-label="播放">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
     <div class="meta">
       <div class="top">
         <h2><span class="num">01</span>电影混剪</h2>
@@ -256,10 +311,15 @@
 
   <!-- 作品 2 -->
   <section class="work">
-    <video controls preload="metadata" playsinline>
-      <source src="ai视频《巷中双侠》.mp4" type="video/mp4">
-      您的浏览器不支持视频播放。
-    </video>
+    <div class="video-wrap">
+      <video controls preload="metadata" playsinline>
+        <source src="ai视频《巷中双侠》.mp4" type="video/mp4">
+        您的浏览器不支持视频播放。
+      </video>
+      <button class="play-btn" aria-label="播放">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
     <div class="meta">
       <div class="top">
         <h2><span class="num">02</span>AI 生成视频 ·《巷中双侠》</h2>
@@ -271,10 +331,15 @@
 
   <!-- 作品 3 -->
   <section class="work">
-    <video controls preload="metadata" playsinline>
-      <source src="4个悄悄变美的微调部位口播.mp4" type="video/mp4">
-      您的浏览器不支持视频播放。
-    </video>
+    <div class="video-wrap">
+      <video controls preload="metadata" playsinline>
+        <source src="4个悄悄变美的微调部位口播.mp4" type="video/mp4">
+        您的浏览器不支持视频播放。
+      </video>
+      <button class="play-btn" aria-label="播放">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
     <div class="meta">
       <div class="top">
         <h2><span class="num">03</span>口播短视频 · 微调部位科普</h2>
@@ -289,6 +354,18 @@
   © 2026 个人视频作品集 · 感谢观看
   <svg class="heart" width="14" height="14" viewBox="0 0 24 24" fill="#FF8FAB"><path d="M12 21s-7.5-4.9-10-9.2C.4 8.6 2.3 5 5.7 5c2 0 3.4 1.1 4.3 2.4h4C15 6.1 16.4 5 18.4 5c3.4 0 5.3 3.6 3.7 6.8C19.5 16.1 12 21 12 21z"/></svg>
 </footer>
+
+<script>
+  // 播放按钮：点击播放，播放时隐藏，暂停/结束时重新显示
+  document.querySelectorAll('.video-wrap').forEach(function (wrap) {
+    var video = wrap.querySelector('video');
+    var btn = wrap.querySelector('.play-btn');
+    btn.addEventListener('click', function () { video.play(); });
+    video.addEventListener('play', function () { btn.classList.add('hidden'); });
+    video.addEventListener('pause', function () { btn.classList.remove('hidden'); });
+    video.addEventListener('ended', function () { btn.classList.remove('hidden'); });
+  });
+</script>
 
 </body>
 </html>
